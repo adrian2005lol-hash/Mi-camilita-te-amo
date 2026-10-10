@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi reina, Mi Camilita Hermosa 🖤✨</title>
+    <!-- Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Syne for punk/editorial style, Montserrat for clean readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Syne:wght@700;800&family=Cinzel:wght@600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nana-black: #08070c;
+            --nana-dark-card: #121019;
+            --nana-pink: #ff8cb6;
+            --nana-light-pink: #ffd0e0;
+            --nana-deep-rose: #d6336c;
+            --nana-violet: #2b1128;
+            --nana-gold: #f3d078;
+        }
+
+        body {
+            background-color: var(--nana-black);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .font-syne {
+            font-family: 'Syne', sans-serif;
+        }
+
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* NANA Style Canvas Background */
+        #star-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Glassmorphism & Borders with Vivienne Westwood/NANA Vibe */
+        .nana-card {
+            background: linear-gradient(145deg, rgba(20, 15, 26, 0.92), rgba(10, 8, 14, 0.95));
+            border: 2px solid var(--nana-pink);
+            box-shadow: 0 0 20px rgba(255, 140, 182, 0.25), inset 0 0 15px rgba(255, 140, 182, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+        }
+
+        .nana-border-glow {
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0px var(--nana-pink), 8px 8px 0px rgba(0,0,0,0.8);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nana-btn {
+            background-color: #0d0a12;
+            color: var(--nana-light-pink);
+            border: 2px solid var(--nana-pink);
+            box-shadow: 3px 3px 0px var(--nana-deep-rose);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nana-btn:hover {
+            background-color: var(--nana-pink);
+            color: #000;
+            box-shadow: 1px 1px 0px #000;
+            transform: translate(2px, 2px);
+        }
+
+        .nana-btn.active {
+            background-color: var(--nana-pink);
+            color: #0b0711;
+            font-weight: 800;
+            box-shadow: 0 0 15px var(--nana-pink);
+            border-color: #ffffff;
+        }
+
+        .nana-special-btn {
+            background: linear-gradient(135deg, #ff8cb6 0%, #d6336c 100%);
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 20px rgba(255, 140, 182, 0.6);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .nana-special-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 140, 182, 0.9);
+        }
+
+        /* Custom Animations */
+        @keyframes floatPetal {
+            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg) translateX(50px); opacity: 0; }
+        }
+
+        .petal {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatPetal linear infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08070c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--nana-deep-rose);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="p-2 md:p-6 min-h-screen flex flex-col items-center justify-between text-pink-100">
+
+    <!-- Interactive Background Canvas -->
+    <canvas id="star-canvas"></canvas>
+
+    <!-- Header Section -->
+    <header class="relative z-10 text-center my-6 max-w-4xl px-4">
+        <div class="inline-block mb-3 px-4 py-1 rounded-full border border-pink-400/40 bg-pink-950/40 text-pink-300 text-xs tracking-widest font-semibold uppercase">
+            ✨ Punk-Romantic Anniversary Edition ✨
+        </div>
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-syne font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-pink-400 to-rose-500 drop-shadow-[0_4px_12px_rgba(255,140,182,0.4)] mb-2">
+            MI ESTRELLITA CAMIWIS 👑🖤
+        </h1>
+        <p class="text-sm md:text-base text-pink-200/80 font-light tracking-wide max-w-lg mx-auto">
+            "A veces me pregunto si el destino nos cruzó por casualidad... pero estar a tu lado es la certeza más hermosa de mi vida."
+        </p>
+        <div class="mt-4 flex justify-center items-center gap-3 text-pink-400 text-sm">
+            <i class="fa-solid fa-crown text-amber-300 text-lg animate-bounce"></i>
+            <span class="font-cinzel text-xs md:text-sm font-semibold tracking-wider text-pink-300">25 DE SEPTIEMBRE 2025 • NUESTRO AÑO MÁGICO</span>
+            <i class="fa-solid fa-gem text-pink-400"></i>
+        </div>
+    </header>
+
+    <!-- Month Navigation Bar -->
+    <nav class="relative z-10 w-full max-w-5xl mb-8">
+        <div class="flex flex-wrap justify-center gap-2 md:gap-3 p-3 rounded-2xl bg-black/60 border border-pink-500/30 backdrop-blur-md shadow-[0_0_25px_rgba(0,0,0,0.8)]">
+            <button class="nana-btn tab-btn active px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold flex items-center gap-1.5" onclick="selectTab(0)">
+                <i class="fa-solid fa-star text-xs"></i> Sep '25
+            </button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold" onclick="selectTab(1)">Oct</button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold" onclick="selectTab(2)">Nov</button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold text-rose-300" onclick="selectTab(3)">
+                <i class="fa-solid fa-snowflake text-xs mr-1"></i>Dic (Atuntaqui)
+            </button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold" onclick="selectTab(4)">Ene '26</button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold" onclick="selectTab(5)">Feb</button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold" onclick="selectTab(6)">Mar</button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold text-amber-300" onclick="selectTab(7)">
+                <i class="fa-solid fa-crown text-xs mr-1"></i>Abr (Tu Cumple)
+            </button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold" onclick="selectTab(8)">May</button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold" onclick="selectTab(9)">Jun</button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold text-pink-300" onclick="selectTab(10)">
+                <i class="fa-solid fa-cake-candles text-xs mr-1"></i>Jul (Mi Cumple)
+            </button>
+            <button class="nana-btn tab-btn px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold" onclick="selectTab(11)">Ago</button>
+            <button class="nana-special-btn tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-extrabold flex items-center gap-2" onclick="selectTab(12)">
+                <i class="fa-solid fa-heart text-white animate-pulse"></i> ✨ NUESTRO PRIMER AÑO ✨
+            </button>
+        </div>
+    </nav>
+
+    <!-- Content Cards Container -->
+    <main class="relative z-10 w-full max-w-3xl mb-12">
+        <div id="content-display" class="nana-card p-6 md:p-10 relative overflow-hidden transition-all duration-500">
+            <!-- Dynamic Content Injected Via JS -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 text-center text-xs text-pink-300/60 pb-6 font-mono">
+        <p>Diseñado con amor eterno y estilo NANA punk-romántico para <span class="text-pink-300 font-bold">My Milina Camilina</span> 🥀✨</p>
+    </footer>
+
+    <script>
+        /* ----------------------------------------------------
+           1. NANA PUNK-ROMANTIC STARRY CANVAS & PIXEL STARS
+        ---------------------------------------------------- */
+        const canvas = document.getElementById('star-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let stars = [];
+        let pixelStars = [];
+        let vivienneOrbs = [];
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initStars();
+        }
+
+        function initStars() {
+            stars = [];
+            pixelStars = [];
+            vivienneOrbs = [];
+
+            // Standard twinkling background stars
+            for (let i = 0; i < 160; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 2,
+                    alpha: Math.random(),
+                    speed: Math.random() * 0.02 + 0.005,
+                    color: Math.random() > 0.3 ? '#ffb6c1' : '#ffffff'
+                });
+            }
+
+            // Mario-style Cross/Sparkle Pixel Stars
+            for (let i = 0; i < 35; i++) {
+                pixelStars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 12 + 8,
+                    scale: Math.random(),
+                    speed: Math.random() * 0.03 + 0.01,
+                    rotation: Math.random() * Math.PI,
+                    rotSpeed: (Math.random() - 0.5) * 0.02,
+                    color: Math.random() > 0.5 ? '#ff8cb6' : '#f3d078'
+                });
+            }
+
+            // NANA Vivienne Westwood Saturn/Orb floating elements
+            for (let i = 0; i < 6; i++) {
+                vivienneOrbs.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 15 + 10,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    alpha: Math.random() * 0.4 + 0.2
+                });
+            }
+        }
+
+        function drawPixelStar(x, y, size, color, alpha) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.globalAlpha = alpha;
+            ctx.fillStyle = color;
+
+            // Draw 4-point NANA anime style sparkle star
+            ctx.beginPath();
+            ctx.moveTo(0, -size);
+            ctx.quadraticCurveTo(0, 0, size, 0);
+            ctx.quadraticCurveTo(0, 0, 0, size);
+            ctx.quadraticCurveTo(0, 0, -size, 0);
+            ctx.quadraticCurveTo(0, 0, 0, -size);
+            ctx.fill();
+
+            // Core glow center
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(0, 0, size * 0.25, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.restore();
+        }
+
+        function drawOrb(orb) {
+            ctx.save();
+            ctx.translate(orb.x, orb.y);
+            ctx.globalAlpha = orb.alpha;
+            
+            // Central planet
+            ctx.fillStyle = '#d6336c';
+            ctx.beginPath();
+            ctx.arc(0, 0, orb.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Saturn Ring (Vivienne Westwood vibe)
+            ctx.strokeStyle = '#f3d078';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.ellipse(0, 0, orb.radius * 2.2, orb.radius * 0.6, Math.PI / 6, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Cross on top of orb
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(0, -orb.radius - 4);
+            ctx.lineTo(0, -orb.radius + 4);
+            ctx.moveTo(-4, -orb.radius);
+            ctx.lineTo(4, -orb.radius);
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Subtle dark violet gradient background
+            let gradient = ctx.createLinearGradient(0, 0, 0, height);
+            gradient.addColorStop(0, '#0b0711');
+            gradient.addColorStop(0.5, '#160b1c');
+            gradient.addColorStop(1, '#07050a');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+
+            // Draw regular twinkling stars
+            stars.forEach(s => {
+                s.alpha += s.speed;
+                if (s.alpha > 1 || s.alpha < 0) s.speed = -s.speed;
+                ctx.fillStyle = s.color;
+                ctx.globalAlpha = Math.abs(s.alpha);
+                ctx.fillRect(s.x, s.y, s.size, s.size);
+            });
+
+            // Draw floating Vivienne Westwood Orbs
+            vivienneOrbs.forEach(orb => {
+                orb.x += orb.vx;
+                orb.y += orb.vy;
+
+                if (orb.x < -20) orb.x = width + 20;
+                if (orb.x > width + 20) orb.x = -20;
+                if (orb.y < -20) orb.y = height + 20;
+                if (orb.y > height + 20) orb.y = -20;
+
+                drawOrb(orb);
+            });
+
+            // Draw NANA Sparkle Stars
+            pixelStars.forEach(ps => {
+                ps.scale += ps.speed;
+                if (ps.scale > 1 || ps.scale < 0.2) ps.speed = -ps.speed;
+                drawPixelStar(ps.x, ps.y, ps.size * ps.scale, ps.color, Math.abs(ps.scale));
+            });
+
+            requestAnimationFrame(animateCanvas);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        animateCanvas();
+
+        /* ----------------------------------------------------
+           2. FLOATING ROSE PETALS (NANA ANIME MOTIF)
+        ---------------------------------------------------- */
+        function createPetals() {
+            const petalCount = 15;
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.innerHTML = `<i class="fa-solid fa-heart text-pink-500/40 text-xs"></i>`;
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.animationDuration = `${Math.random() * 8 + 6}s`;
+                petal.style.animationDelay = `${Math.random() * 5}s`;
+                document.body.appendChild(petal);
+            }
+        }
+        createPetals();
+
+        /* ----------------------------------------------------
+           3. MONTHLY DATA & INTERACTIVE QUIZZES
+        ---------------------------------------------------- */
+        const storyData = [
+            {
+                month: "Mes 1: Septiembre 2025",
+                tag: "El comienzo de la historia de nuestras vidas 🖤",
+                icon: "fa-star",
+                text: "El 25 de septiembre de 2025 comenzó la aventura más hermosa de mi existencia. Desde el primer instante en que sostuve tu mirada, supe que tus ojos dulces y tu sonrisa única se convertirían en mi único refugio en este mundo. Eres mi luz entre las estrellas.",
+                question: "¿Recuerdas lo que sintió mi corazón el primer día que fuiste oficialmente mi novia?",
+                options: [
+                    { text: "Que había encontrado la suerte más grande del universo.", reply: "¡Exacto mi vida! Sentí que el destino al fin me regalaba a la niña más hermosa del planeta. ✨❤️" },
+                    { text: "Que nunca jamás te dejaría ir porque eres mi gran amor.", reply: "¡Totalmente verdadero! Prometí cuidarte y amarte con toda mi alma desde el primer segundo. 🥰👑" }
+                ]
+            },
+            {
+                month: "Mes 2: Octubre 2025",
+                tag: "Descubriéndote en cada mirada 🥀",
+                icon: "fa-moon",
+                text: "Cada conversación, cada risa compartida y cada pequeño gesto tuyo en octubre hicieron que mi mundo se tiñera de rosa pastel y luz. Me di cuenta de lo increíblemente dulce, madura y tierna que eres, mi Camilita reina. Poco a poco te adueñaste de cada uno de mis pensamientos.",
+                question: "¿Qué es lo que más me paraliza de amor cuando me miras fijamente?",
+                options: [
+                    { text: "El brillo único y puro que tienen tus hermosos ojos.", reply: "¡Sí! Tus ojos son mi constelación favorita en todo el cielo nocturno. ✨👁️" },
+                    { text: "La forma tan tierno en que sonríes sin darte cuenta.", reply: "¡Esa sonrisa tuya ilumina hasta el día más oscuro de mi vida! 💕🌹" }
+                ]
+            },
+            {
+                month: "Mes 3: Noviembre 2025",
+                tag: "Construyendo nuestra complicidad 🎸",
+                icon: "fa-compact-disc",
+                text: "Los días fríos de noviembre se volvieron infinitamente cálidos con solo saber que estabas en mi vida. Empezamos a formar el equipo más sólido y soñador. Sostener tu mano se convirtió en mi actividad favorita del día.",
+                question: "¿Sabes en qué lugar me siento más seguro en todo el planeta?",
+                options: [
+                    { text: "Recostado junto a ti mientras me abrazas muy fuerte.", reply: "¡Exacto! En tus brazos todo el ruido del mundo desaparece y solo hay paz. ❤️✨" },
+                    { text: "Caminando a tu lado sosteniendo tu manita bien firme.", reply: "¡Tomar tu mano me da toda la fuerza y felicidad que necesito! 🌹🖤" }
+                ]
+            },
+            {
+                month: "Mes 4: Diciembre 2025",
+                tag: "Atuntaqui & Quito: Pensándote en la distancia ❄️",
+                icon: "fa-snowflake",
+                highlight: true,
+                text: "Llegaron las fiestas de diciembre y la distancia nos puso a prueba: tú en Atuntaqui compartiendo con tu familia y yo en Quito. Pero la distancia geográfica fue simplemente nada para el amor gigante que nos tenemos. En ningún segundo dejé de pensarte. Mientras miraba las luces nocturnas de Quito, solo deseaba teletransportarme a Atuntaqui a estar a tu lado para abrazarte y demostrarte todo mi amor.",
+                question: "¿Qué era lo que mi corazón le pedía al universo en cada noche de diciembre?",
+                options: [
+                    { text: "Viajar corriendo a Atuntaqui para darte un abrazo apretado de Año Nuevo.", reply: "¡Era mi único y ferviente deseo! Ir a Atuntaqui y comerte a besos mi niña hermosa. 🎆💖" },
+                    { text: "Susurrarte al oído que a pesar de la distancia eres mi dueña absoluta.", reply: "¡Siempre estuviste en mi mente y en mi corazón en cada segundo de diciembre! 🖤✨" }
+                ]
+            },
+            {
+                month: "Mes 5: Enero 2026",
+                tag: "Iniciando un nuevo año a tu lado 🎆",
+                icon: "fa-sparkles",
+                text: "Iniciamos el 2026 renovando nuestro pacto de amor. Un año entero por delante para escribir historias a tu lado. Me prometí que este año estaría repleto de risas, caricias y felicidad para mi estrellita Camis.",
+                question: "¿Cuál fue mi meta principal cuando vi iniciar este nuevo año?",
+                options: [
+                    { text: "Hacerte la mujer más feliz y amada sobre la faz de la tierra.", reply: "¡Y es una meta que cumpliré todos y cada uno de los días de mi vida! 👑😍" },
+                    { text: "Demostrarte que siempre puedes contar conmigo incondicionalmente.", reply: "¡Jamás estarás sola, siempre seré tu refugio y tu protector! 💖✨" }
+                ]
+            },
+            {
+                month: "Mes 6: Febrero 2026",
+                tag: "Medio año de un amor invencible 💌",
+                icon: "fa-heart-pulse",
+                text: "Febrero nos recordó que para nosotros todos los días son San Valentín. Cumplir medio año juntos fue la prueba de que lo nuestro no es pasajero; es un amor real, maduro, vibrante y lleno de magia NANA punk-romántica.",
+                question: "¿Qué es lo que hace que nuestro noviazgo sea único e inolvidable?",
+                options: [
+                    { text: "Que nuestro amor es puro, sincero, apasionado y transparente.", reply: "¡Absolutamente! No hay máscaras entre nosotros, solo amor puro. 💌🔥" },
+                    { text: "Que cualquier momento ordinario a tu lado se vuelve un recuerdo épico.", reply: "¡Hasta estar en silencio contigo se siente perfecto y lleno de magia! 💞🥀" }
+                ]
+            },
+            {
+                month: "Mes 7: Marzo 2026",
+                tag: "Nuestros sueños floreciendo 🌸",
+                icon: "fa-seedling",
+                text: "Siete meses de paciencia, comprensión y un cariño que crece más fuerte con cada amanecer. Ver cómo nos apoyamos mutuamente en nuestras metas me hace sentir el hombre más orgulloso.",
+                question: "¿Qué siento en mi pecho cada vez que te veo venir hacia mí?",
+                options: [
+                    { text: "Las mismas mariposas intensas del mismísimo primer día.", reply: "¡Sí! Mi corazón se acelera exactamente igual que el 25 de septiembre. 💓✨" },
+                    { text: "Una paz y plenitud gigantesca que me alegra toda la semana.", reply: "¡Verte llegar es el remedio para cualquier mal día! 🌸👑" }
+                ]
+            },
+            {
+                month: "Mes 8: Abril 2026",
+                tag: "El cumpleaños de mi Reina (Vestido & Corona) 👑🎂",
+                icon: "fa-crown",
+                highlight: true,
+                text: "Llegó el mes de tu cumpleaños, mi adorada Camilita. Sé que tal vez sentía que no podía darte la celebración gigantesca o el cumpleaños digno que mereces por ser la mujer más maravillosa del mundo, pero verte sonreír ese día fue lo más sublime del año. Te veías deslumbrante con tu hermoso vestido y tu corona de reina. Estabas más majestuosa que nunca.",
+                question: "¿Cómo te veías ante mis ojos el día de tu cumpleaños con tu corona?",
+                options: [
+                    { text: "Como la reina más hermosa y perfecta de todo el universo entero.", reply: "¡Radiante, majestuosa y divina! Nadie en este mundo se compara contigo mi reina. 👑💖✨" },
+                    { text: "Como la mujer más bella con esa sonrisa que me robó el alma.", reply: "¡Verte sonreír con tu vestido y tu corona se quedó grabado en mi corazón para siempre! 🌹🖤" }
+                ]
+            },
+            {
+                month: "Mes 9: Mayo 2026",
+                tag: "Amor constante y sin condiciones 🌙",
+                icon: "fa-gem",
+                text: "Mayo fue un mes de amor constante y cálido. En cada mensaje de buenos días, en cada llamada nocturna contemplando las estrellas, confirmamos que lo nuestro es de esas historias de amor eternas.",
+                question: "¿Qué es lo primero que pasa por mi mente al despertar por las mañanas?",
+                options: [
+                    { text: "Darle gracias a la vida por tener a mi lado al amor de mivida mi Cami.", reply: "¡Todos los días me despierto sabiendo que soy el tipo más afortunado! ☀️🥰" },
+                    { text: "Escribirte para asegurarme de que mi niña hermosa amanezca feliz.", reply: "¡Verte feliz por las mañanas hace que mi día valga completamente la pena! 💛✨" }
+                ]
+            },
+            {
+                month: "Mes 10: Junio 2026",
+                tag: "Contando los días para nuestro aniversario ⏳",
+                icon: "fa-hourglass-half",
+                text: "Diez meses de caminar tomados de la mano. Mirar atrás y repasar todo lo que hemos superado y disfrutado juntos me llena el pecho de un orgullo y un amor indescriptible.",
+                question: "Si tuviera que elegir un solo lugar en el mapa para vivir por siempre, ¿cuál sería?",
+                options: [
+                    { text: "Cualquier rincón del mundo, pero pegadito a ti abrazándote.", reply: "¡Mi único hogar verdadero son tus brazos mi amor! 🏡💖" },
+                    { text: "Donde sea que tú sonrías, ahí es donde pertenezco.", reply: "¡Exacto! Tú eres mi lugar seguro y mi destino. ✨🥀" }
+                ]
+            },
+            {
+                month: "Mes 11: Julio 2026",
+                tag: "Mi Cumpleaños a tu Lado 🎂🎉",
+                icon: "fa-cake-candles",
+                highlight: true,
+                text: "Julio fue inolvidable para mí por una razón muy clara: lo mejor de todo mi mes y de todo mi año fue tener la bendición de pasar mi cumpleaños contigo. No necesité ningún regalo ostentoso; tu presencia, tus besos, tus caricias y tu amor sincero fueron el mejor regalo de cumpleaños que el universo me pudo otorgar.",
+                question: "¿Cuál fue el regalo más valioso de mi cumpleaños en julio?",
+                options: [
+                    { text: "Tu compañía amorosa, tus besos y tu hermosa sonrisa a mi lado.", reply: "¡El mejor cumpleaños de mi vida gracias a ti mi amor! 🎁❤️✨" },
+                    { text: "Sentir que me amas con la misma intensidad con la que yo te amo.", reply: "¡Tu amor fue y siempre será mi mejor regalo en esta vida! 🎉💖" }
+                ]
+            },
+            {
+                month: "Mes 12: Agosto 2026",
+                tag: "A las puertas de nuestro primer año 🖤",
+                icon: "fa-ribbon",
+                text: "Agosto marcó la recta final de nuestro primer ciclo. La cuenta regresiva estaba al máximo y mi corazón latía con la emoción de saber que estábamos por cumplir 365 días de puro amor invencible.",
+                question: "¿Cómo llegó mi corazón a agosto tras casi 12 meses juntos?",
+                options: [
+                    { text: "Infinitamente más enamorado que aquel 25 de septiembre.", reply: "¡Mi amor por ti solo se multiplicó cada día que pasó! 💓✨" },
+                    { text: "Con la certeza absoluta de que eres el amor de toda mi vida.", reply: "¡Eres y serás por siempre la reina de mi corazón! 👑❤️" }
+                ]
+            },
+            {
+                month: "✨ NUESTRO PRIMER AÑO JUNTOS ✨",
+                tag: "25 de Septiembre 2025 - Presente • Amor Eterno 💖",
+                icon: "fa-award",
+                isSpecial: true,
+                text: "¡HEMOS LLEGADO A NUESTRO PRIMER AÑO DE NOVIOS! 365 días inolvidables superando distancias entre Quito y Atuntaqui, viéndote brillar como una verdadera reina con tu vestido y tu corona en abril, celebrando mi cumpleaños a tu lado en julio, y amándonos sin límites en cada instante. Gracias por ser mi compañera, mi musa y el amor de mi vida.",
+                question: "Llegó el momento de la confirmación final mi reina... ¿Me confirmas que me amas tanto como yo te adoro a ti?",
+                options: [
+                    { text: "¡SÍ MI AMOR! Te amo con todo mi corazón y este es solo el primer año de miles juntos. ❤️✨", reply: "¡SÍ MI REINA! Eres el amor de mi vida entera. Prometo hacerte la mujer más feliz del universo por siempre. 🥰💖👑" },
+                    { text: "¡SÍ MI VIDA! Eres mi persona favorita en el universo entero y siempre estaré a tu lado. 💕", reply: "¡GRACIAS POR ESTE PRIMER AÑO TAN MÁGICO! Te amo Camilinga Maldonado, hoy, mañana y por el resto de la eternidad. 🌹🖤" }
+                ]
+            }
+        ];
+
+        let currentTab = 0;
+
+        function renderStory(index) {
+            currentTab = index;
+            const data = storyData[index];
+            const display = document.getElementById('content-display');
+
+            // Update Tab Button styles
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Card highlight theme styling
+            let cardBorderStyle = "border-pink-500/50 shadow-[0_0_20px_rgba(255,140,182,0.3)]";
+            if (data.isSpecial) {
+                cardBorderStyle = "border-rose-400 shadow-[0_0_35px_rgba(255,140,182,0.7)] bg-gradient-to-br from-pink-950/80 via-purple-950/80 to-black/90";
+            } else if (data.highlight) {
+                cardBorderStyle = "border-amber-400/70 shadow-[0_0_25px_rgba(243,208,120,0.4)]";
+            }
+
+            display.className = `nana-card p-6 md:p-10 relative overflow-hidden transition-all duration-300 ${cardBorderStyle}`;
+
+            display.innerHTML = `
+                <!-- NANA Aesthetic Ornament Details -->
+                <div class="absolute -right-6 -top-6 text-pink-500/10 text-8xl pointer-events-none font-cinzel">
+                    <i class="fa-solid ${data.icon}"></i>
+                </div>
+
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="p-2 rounded-xl bg-pink-900/40 text-pink-300 border border-pink-500/30">
+                        <i class="fa-solid ${data.icon} text-lg"></i>
+                    </span>
+                    <span class="text-xs font-mono font-semibold tracking-widest text-pink-400 uppercase">${data.tag}</span>
+                </div>
+
+                <h2 class="text-2xl md:text-3xl font-syne font-bold text-white mb-4 flex items-center gap-2">
+                    ${data.month}
+                </h2>
+
+                <p class="text-sm md:text-base text-pink-100/90 leading-relaxed font-light mb-6 bg-black/40 p-4 rounded-xl border border-pink-500/20">
+                    ${data.text}
+                </p>
+
+                <!-- Interactive Quiz Section -->
+                <div class="nana-border-glow bg-black/80 p-5 rounded-xl border-2 border-pink-400/60 my-4">
+                    <p class="font-semibold text-pink-200 text-sm md:text-base mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-question text-rose-400"></i>
+                        ${data.question}
+                    </p>
+
+                    <div class="space-y-2.5">
+                        ${data.options.map((opt, optIdx) => `
+                            <button onclick="handleAnswer(${index}, ${optIdx})" 
+                                class="w-full text-left p-3 rounded-lg bg-pink-950/30 hover:bg-pink-900/60 border border-pink-500/30 hover:border-pink-300 text-xs md:text-sm text-pink-100 transition-all duration-200 flex items-start gap-2 group">
+                                <i class="fa-regular fa-heart text-pink-400 group-hover:text-pink-200 mt-0.5"></i>
+                                <span>${opt.text}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <div id="quiz-feedback-${index}" class="hidden mt-4 p-4 rounded-lg bg-gradient-to-r from-pink-900/80 to-rose-900/80 border border-pink-300 text-white text-xs md:text-sm leading-relaxed shadow-lg animate-fadeIn">
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleAnswer(tabIdx, optIdx) {
+            const feedbackEl = document.getElementById(`quiz-feedback-${tabIdx}`);
+            const replyText = storyData[tabIdx].options[optIdx].reply;
+
+            feedbackEl.classList.remove('hidden');
+            feedbackEl.innerHTML = `
+                <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-heart text-pink-300 text-base mt-0.5 animate-bounce"></i>
+                    <div>
+                        <strong class="block text-pink-200 text-xs uppercase tracking-wider mb-1">Mensaje de Amor:</strong>
+                        <span>${replyText}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectTab(index) {
+            renderStory(index);
+        }
+
+        // Initialize First View
+        renderStory(0);
+    </script>
+</body>
+</html>
